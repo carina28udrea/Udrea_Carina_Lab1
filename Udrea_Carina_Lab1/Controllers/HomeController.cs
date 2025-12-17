@@ -1,25 +1,28 @@
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Udrea_Carina_Lab1.Models;
 
-namespace Udrea_Carina_Lab1.Controllers
-{
-    public class HomeController : Controller
+    namespace NumeProiect.Controllers
     {
-        public IActionResult Index()
+        public class ExempluController : Controller
         {
-            return View();
-        }
+            public string Index()
+            {
+                return "Bine ați venit!";
+            }
+            public string Salut()
+            {
+                return "Salut!";
+            }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+            public string AfisareDetalii(string nume, int varsta)
+            {
+                string numeAfisat = string.IsNullOrEmpty(nume) ? "Necunoscut" : nume;
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+                string mesaj = $"Buna! Numele meu este {numeAfisat} si am {varsta} ani ";
+
+
+            return mesaj;
+            }
         }
     }
-}
